@@ -1,0 +1,49 @@
+<!-- Create a form with fields for name, email, and password. Using JavaScript, implement client-
+side validation for the following criteria:
+
+a. Name: Should contain only alphabetic characters.
+b. Email: Should match a valid email format.
+c. Password: Should have a minimum length of 8 characters, including at least one uppercase
+letter, one lowercase letter, and one digit.
+d. After validating the form, store the name and email in local storage -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Form</h4><br>
+    Name : <input type="text" id="name"><br><br>
+    Email : <input type="email" id="mail"><br><br>
+    Password : <input type="password" id="pass"><br><br>
+    <button input="submit" name="" id="b1">Submit</button>
+
+    <script>
+        const b1 = document.getElementById("b1");
+        b1.addEventListener("click",()=>{
+            const name = document.getElementById("name").value
+            const mail = document.getElementById("mail").value
+            const pass = document.getElementById("pass").value
+
+            const nameReg = /^[A-Za-z\s]+$/
+            const mailReg = /^[^\s\.@]+@[^\.\s\d]+\.[^\d\s] $/
+            const passReg = /^ (?=.*[A-Z]) (?=.*[a-z] (?=.*[\d]) )$/
+
+            if(!nameReg.test(name)){
+                alert("Enter valid name")
+            } else if(!mailReg.test(mail)){
+                alert("Enter valid mail")
+            } else if (!passReg.test(pass)){
+                alert("Enter valid password")
+            } else{
+                alert("Form submitted successfully")
+                const users = {name,mail,pass};
+                localStorage.setItem("data",JSON.stringify(users));
+            }
+        })
+    </script>
+</body>
+</html>

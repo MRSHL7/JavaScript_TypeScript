@@ -1,0 +1,42 @@
+<!-- // Q6 Create a product form with fields for product name, price, and quantity. Use JavaScript for
+// client-side validation:
+// a. Product Name: Should not be empty.
+// b. Price: Should be a positive number. Store the products details in local storage upon
+// successful validation. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Product Form </h3> <br>
+    Product Name : <input type="text" id="name"><br><br>
+    Product Price : <input type="number" id="price"><br><br>
+    Product Quatity : <input type="number" id="quantity"><br><br>
+    <button input="submit" name="" id="b1">Submit</button>
+
+    <script>
+        const b1 = document.getElementById("b1")
+        b1.addEventListener("click",()=>{
+            const name = document.getElementById("name").value
+            const price = document.getElementById("price").value
+            const quantity = document.getElementById("quantity").value
+
+            if(name.length<1){
+                alert("Plz enter product name !");
+                return
+            } else if (price < 0){
+                alert ("Plz enter positive number !");
+                return
+            } else{
+                alert ("Thank You")
+                const users = {name,price,quantity};
+                localStorage.setItem("data",JSON.stringify(users));
+            }
+        })
+    </script>
+</body>
+</html>
